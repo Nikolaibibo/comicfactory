@@ -1,0 +1,107 @@
+{
+  "1": {
+    "inputs": {
+      "image": "pose2.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image to swap face"
+    }
+  },
+  "2": {
+    "inputs": {
+      "image": "1000011530 (2).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image (face to fill in)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "bbox_model_name": "bbox/face_yolov8m.pt",
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3,
+      "bbox_drop_size": 10,
+      "sam_model_name": "sam_vit_b_01ec64.pth",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "bbox_expansion": 0,
+      "mask_hint_threshold": 0.7,
+      "mask_hint_use_negative": "False",
+      "morphology_operation": "dilate",
+      "morphology_distance": 0,
+      "blur_radius": 9,
+      "sigma_factor": 1,
+      "image": [
+        "1",
+        0
+      ],
+      "swapped_image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "ReActorMaskHelper",
+    "_meta": {
+      "title": "ReActor 🌌 Masking Helper"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "faceswap",
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "input_faces_order": "large-small",
+      "input_faces_index": "0",
+      "detect_gender_input": "no",
+      "source_faces_order": "large-small",
+      "source_faces_index": "0",
+      "detect_gender_source": "no",
+      "console_log_level": 2
+    },
+    "class_type": "ReActorOptions",
+    "_meta": {
+      "title": "ReActor 🌌 Options"
+    }
+  },
+  "12": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "input_image": [
+        "1",
+        0
+      ],
+      "source_image": [
+        "2",
+        0
+      ],
+      "options": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwapOpt",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap [OPTIONS]"
+    }
+  }
+}

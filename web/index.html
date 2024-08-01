@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Comic factory</title>
+
+		<link rel="stylesheet" type="text/css" href="/comic/css/uikit.min.css">
+		<link rel="stylesheet" type="text/css" href="/comic/css/comic.css?v=0.1.0">
+	</head>
+
+	<body>
+
+		<div id="view1" class="view">
+			<h2>Step 1</h2>
+			<div id="question">Please select a selfie</div>
+			<br>
+			<input type="file" id="imageInput" accept="image/*">
+			<br>
+			<form>
+			  <button type="button" onclick="showView('view2')">Next</button>
+			</form>
+		  </div>
+		
+		  <div id="view2" class="view">
+			<h2>Step 2</h2>
+			<div class="radio-group">
+				<input type="radio" id="option1" name="option" value="1" checked>
+				<label for="fluids">Fortnite</label>
+			</div>
+			<div class="radio-group">
+				<input type="radio" id="option2" name="option" value="2">
+				<label for="fabric">Super Hero</label>
+			</div>
+			<div class="radio-group">
+				<input type="radio" id="option3" name="option" value="3">
+				<label for="Starfield">EM Fan</label>
+			</div>
+			<br>
+			<br>
+			<label for="myCheckbox">Male character</label>
+			<input type="checkbox" id="male" name="male" value="male" checked>
+			<form>
+			  	<button type="button" onclick="showView('view1')">Previous</button>
+			  	<button type="button" onclick="showView('view3')" id="sndbtn">Start the process</button>
+			</form>
+		  </div>
+
+		  <div id="view3" class="view">
+			<h2>Result</h2>
+			<br>
+			<div uk-spinner="ratio: 3" id="spinner"></div>
+			<progress id="main-progress" class="progress" value="0" max="0"></progress>
+			<img src="" width="1" height="1" id="maingen" />
+			<br>
+			<a id="dllink" href="" download>Download Image</a>
+			<br>
+			<form>
+			  <button type="button" onclick="showView('view1')" id="resetbtn">One more!!</button>
+			</form>
+		  </div>
+		
+		  <script>
+			function showView(viewId) {
+				document.querySelectorAll('.view').forEach(view => view.style.display = 'none');
+				document.getElementById(viewId).style.display = 'block';
+			}
+				
+			// Show the first view initially
+			showView('view1');
+		  </script>
+		
+
+    <script src="/comic/js/uikit.min.js"></script>
+	<script src="/comic/js/uikit-icons.min.js"></script>
+    <script src="/comic/js/app.js"></script>
+
+  </body>
+</html>
